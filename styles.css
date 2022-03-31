@@ -15,28 +15,35 @@ body{
 h1{
     font-size: 80px;
     color: var(--dark-gray);
-    margin-left: 44vw;
-}
-
-.active{
-    background-color: var(--dark-gray);
-    color: var(--white);
+    margin-left: 20vw;
 }
 
 .container{
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+
 }
 
 #options{
     display: flex;
     flex-direction: column;
-    margin: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 200px;
+    margin-left: 18vw;
 }
 
 .option{
     background-color: var(--gray);
     margin-bottom: 36px;
-    width: 16vw;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
 }
 
 .option:hover{
@@ -48,6 +55,7 @@ h1{
     height: 44vw;
     width: 44vw;
     background-color: white;
+    display: grid;
 }
 
 .slidebar{
@@ -66,4 +74,12 @@ h1{
 .myslider:hover{
     opacity: 1;
 
+}
+
+.gridRow{
+    background-color: var(--white);
+}
+
+.col{
+    background-color: var(--white);
 }
