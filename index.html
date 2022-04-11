@@ -9,13 +9,13 @@
         <h1>Etch - a - sketch</h1>
         <div id="container">
             <div id="options">
+                <input id="colorPicker" type="color" value="#333333"/>
                 <button id="color" class="option">Color</button>
                 <button id="rainbow" class="option">Rainbow</button>
                 <button id="eraser" class="option">Eraser</button>
                 <button id="clear" class="option">Clear</button>
-                <div class="slideBar" id="sizeValue">16x16
-                    <input type="range" min="1" max="64" value="16" class="mySlider" id="sliderRange">
-                </div>
+                <div class="slideBar" id="sizeValue">16x16</div>
+                <input type="range" min="1" max="64" value="16" class="mySlider" id="sliderRange"/>
             </div>
             <div id="slate" class="slate"></div>
         </div>

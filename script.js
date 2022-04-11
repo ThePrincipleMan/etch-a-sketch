@@ -9,6 +9,7 @@ let currentSize = DEFAULT_SIZE;
 // functions for setting all selections
 
 function setCurrentMode(newMode){
+    activateButton(newMode)
     currentMode = newMode;
 }
 function setCurrentColor(newColor){
@@ -30,35 +31,64 @@ const color = document.getElementById('color');
 const rainbow = document.getElementById('rainbow');
 const eraser = document.getElementById('eraser');
 const clear = document.getElementById('clear');
-const slate = document.getElementById('slate');
+const grid = document.getElementById('slate');
 const rangeSlider = document.getElementById('sliderRange');
 const sizeValue = document.getElementById('sizeValue');
 
-let gridSide = rangeSlider.value;
-let selection = '';
-let rows = document.getElementsByClassName('gridRow');
-let cols = document.getElementsByClassName('col');
 
-function relodeGrid(){
+
+function reloadGrid(){
     clearGrid();
     makeGrid(currentSize);
 }
 
 function clearGrid(){
-    slate.innerHTML = '';
+    grid.innerHTML = '';
 }
 
-function makeGrid(num){
-    for(let r = 0; r<num; r++){
-        let row = document.createElement('div');
-        slate.appendChile('row').className = 'gridRow';
+function makeGrid(size){
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+
+    for(let i = 0; i<size*size; i++){
+        const gridElement = document.createElement('div');
+        gridElement.classList.add('grid-element');
+        gridElement.addEventListener('mouseover', changeColor);
+        gridElement.addEventListener('mousedown', changeColor);
+        grid.appendChild(gridElement);
+    }
+}
+
+function changeColor(e){
+    if(e.type === 'mouseover' && !mouseDown) return
+    if(currentMode === 'rainbow'){
+        const randomR = Math.floor(Math.random() * 256)
+        const randomG = Math.floor(Math.random() * 256)
+        const randomB = Math.floor(Math.random() * 256)
+        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+    } else if(currentMode === 'color'){
+        e.target.style.backgroundColor = currentColor
+    } else if(currentMode === 'eraser'){
+        e.target.style.backgroundColor === '#fefefe'
+    }
+}
+
+function activateButton(newMode){
+    if(currentMode === 'rainbow'){
+        rainbow.classList.remove('active')
+    } else if(currentMode === 'color'){
+        color.classList.remove('active')
+    } else if(currentMode === 'eraser'){
+        eraser.classList.remove('active')
     }
 
-    for(let r = 0; r<num; r++){
-        for(let c = 0; c<num; c++){
-            let newCol = createElement('div');
-            rows[c].appendChild('newCol').className = 'col';
-        }
+    if(newMode === 'rainbow'){
+        rainbow.classList.add('active')
+    } else if(newMode === 'color'){
+        color.classList.add('active')
+    } else if(newMode === 'eraser'){
+        eraser.classList.add('active')
     }
 }
 

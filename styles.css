@@ -1,6 +1,7 @@
 * {
     --gray: #5c5c5c;
     --dark-gray: #1d1a1a;
+    --black: #333333;
     --white: #fafff7;
     --green: #65a84a;
     --yellow: #ffef5b;
@@ -26,6 +27,25 @@ h1{
     max-width: 1100px;
     margin: 0 auto;
 
+}
+
+button{
+    border: 2px solid var(--green);
+    color: var(--black);
+    border-radius: 5px;
+    padding: 10px 25px;
+    transition: transform 0.05s ease-in-out;
+}
+
+button.hover{
+    background-color: var(--black);
+    color: var(--white);
+    transform: scale(1.23);
+}
+
+button.active{
+    background-color: var(--black);
+    color: var(--white);
 }
 
 #options{
@@ -54,7 +74,7 @@ h1{
 #slate{
     height: 44vw;
     width: 44vw;
-    background-color: white;
+    background-color: #fefefe;
     display: grid;
 }
 
